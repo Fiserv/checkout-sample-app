@@ -75,7 +75,7 @@ All of the MCP servers expect the bundled HTML, JS, and CSS to be served from th
 pnpm run serve
 ```
 
-The assets are exposed at [`http://localhost:4444`](http://localhost:4444) with CORS enabled so that local tooling (including MCP inspectors) can fetch them.
+The assets are exposed at [`http://localhost:8088`](http://localhost:8088) with CORS enabled so that local tooling (including MCP inspectors) can fetch them.
 
 > **Note:** The Python Pizzaz server caches widget HTML with `functools.lru_cache`. If you rebuild or manually edit files in `assets/`, restart the MCP server so it picks up the updated markup.
 

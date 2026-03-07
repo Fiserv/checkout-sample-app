@@ -1,44 +1,137 @@
-# Shopping cart MCP server (Python)
+# Shopping Cart MCP Server
 
-This example shows how to thread state across conversation turns by pairing `_meta["widgetSessionId"]` with `window.openai.widgetState`. The Python server ships a simple `add_to_cart` tool as an example, plus a widget that stays in sync even when the user adjusts quantities in the UI between turns.
+A Python-based Model Context Protocol (MCP) server that exposes e-commerce tools for shopping cart management and checkout operations. This server integrates with the OpenAI Apps SDK to provide conversational commerce capabilities.
 
-## Installation
+## 📋 Overview
 
-In a shell, start the shopping-cart MCP server (from the repo root):
+This MCP server implements the following tools:
+- **product_search** – Search products by query
+- **add_to_cart** – Add items to the shopping cart
+- **update_cart_item** – Modify item quantities
+- **checkout** – Create checkout sessions
+- **place_order** – Process and complete orders
+
+The server maintains cart state across conversation turns using session IDs and returns structured content with widgets for UI rendering.
+
+## 🛠️ Prerequisites
+
+- Python 3.12+
+- pip or poetry
+- Docker (optional, for containerized setup)
+
+## 📦 Setup
+
+### Local Development
+
+1. **Clone and navigate to this directory:**
+   ```bash
+   cd ch-openai-checkout-app
+   ```
+
+2. **Create a virtual environment:**
+   ```bash
+   python3.12 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r shopping_cart_python/requirements.txt
+   ```
+
+## 🚀 Build and Run
+
+### Local Execution
 
 ```bash
-docker build --platform linux/arm64 -f shopping_cart_python/Dockerfile -t shopping-cart-python .
-docker run --rm -p 8080:8080 shopping-cart-python
+# Run the MCP server directly
+python shopping_cart_python/main.py
 ```
 
-The server exposes `GET /mcp` for SSE and `POST /mcp/messages?sessionId=...` for follow-up messages, mirroring the other FastMCP examples.
+The server starts on `http://localhost:8080` with:
+- `GET /mcp` – Server-Sent Events (SSE) endpoint for MCP protocol
+- `POST /mcp/messages?sessionId={sessionId}` – Tool execution endpoint
+- `GET /actuator/health` – Health check endpoint
 
-## How the state flow works
+### Docker Build and Run
 
-- Every `call_tool` response sets `_meta["widgetSessionId"]` to the cart identifier and returns a `structuredContent` payload containing the new cart items.
-- The widget reads `window.openai.widgetState`, merges in the latest `toolOutput.items`, and writes the combined snapshot back to `window.openai.widgetState`. UI interactions (increment/decrement) also update that shared state so the next turn sees the changes.
-- Because the host keeps `widgetState` keyed by `widgetSessionId`, subsequent tool calls for the same session automatically receive the prior cart state, letting the model and UI stay aligned without extra plumbing.
+**Build the image:**
+```bash
+docker build -f shopping_cart_python/Dockerfile -t shopping-cart-python .
+```
 
-## Recommended production pattern
+**Run the container:**
+```bash
+docker run -p 8080:8080 shopping-cart-python
+```
 
-This demo leans on `window.openai.widgetState` to illustrate the mechanics. In production, keep the cart in your MCP server (or a backing datastore) instead of relying on client-side state:
+The server will be accessible at `http://localhost:8080`.
 
-- On each `add_to_cart` (or similar) tool call, load the cart from your datastore using the session/cart ID, apply the incoming items, persist the new snapshot, and return it along with `_meta["widgetSessionId"]`.
-- From the widget, treat the datastore as the source of truth: every UX interaction (like incrementing quantities) should invoke your backend—either via another MCP tool call or a direct HTTP request—to mutate and re-read the cart.
-- Continue setting `_meta["widgetSessionId"]` so the host and widget stay locked to the same cart across turns, while the datastore ensures durability and multi-device correctness.
+## 📂 Project Structure
 
-A lightweight in-memory store works for local testing; swap in a persistent datastore when you move beyond the demo.
+```
+shopping_cart_python/
+├── main.py                      # Server entry point and tool definitions
+├── models.py                    # Data models (Product, Cart, Session)
+├── requirements.txt             # Python dependencies
+└── Dockerfile                   # Docker configuration (Python 3.12)
 
-## Example demo flow
+├── product_data.json            # Sample product catalog
+├── checkout_session_data.json   # Checkout session templates
+└── checkout_completion_data.json # Order completion data
+```
 
-- Ask "Add 2 eggs to my cart" => you will be prompted to add the eggs to the cart, and this will be the initial cart state
-- Say "Now add milk" => the milk will be added to the existing cart
-- Add 2 avocados from the UI => the widget state will change
-- Say "Now add 3 tomatoes" => the tomatoes will be added to the existing cart
+## 🔧 Configuration
 
-You should have the following cart state:
+Environment variables (optional):
+```
+APP_VERSION=1.0.0
+HOST=0.0.0.0
+PORT=8080
+```
 
-- N eggs
-- 1 milk
-- 2 avocados
-- 3 tomatoes
+## 🧪 Health Check
+
+Verify the server is running:
+```bash
+curl http://localhost:8080/actuator/health
+```
+
+## 📚 MCP Protocol Details
+
+The server exposes tools following the MCP specification:
+
+- **Tool Definition** – Each tool includes JSON Schema contracts for input/output
+- **Tool Execution** – Models issue `call_tool` requests with arguments
+- **Structured Response** – Returns data with `_meta["widgetSessionId"]` for UI state synchronization
+- **Session Management** – Cart state persisted per session ID across conversation turns
+
+## 🚢 Production Deployment
+
+For production, consider:
+- Implement persistent datastore for cart state (database, cache layer)
+- Add authentication and authorization
+- Enable HTTPS/TLS
+- Add request logging and monitoring
+- Implement proper error handling
+- Configure CORS appropriately
+
+## 📖 API Example
+
+**Search Products:**
+```bash
+curl -X POST http://localhost:8080/mcp/messages?sessionId=session-123 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "call_tool",
+    "params": {
+      "name": "product_search",
+      "arguments": {"query": "gift card"}
+    }
+  }'
+```
+
+## 📄 License
+
+MIT License – See LICENSE file for details
