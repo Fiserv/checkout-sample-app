@@ -9,6 +9,7 @@ MERCHANT_MAPPING = {
     "HomeDepot": "100015000300423",
     "Panera": "panerabread",
     "Dell": "dell",
+    "NewEgg": "NewEgg",
 }
 
 __all__ = [
