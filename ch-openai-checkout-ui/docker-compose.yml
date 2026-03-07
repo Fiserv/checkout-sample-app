@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  checkout-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4444:4444"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    container_name: ch-openai-checkout-ui

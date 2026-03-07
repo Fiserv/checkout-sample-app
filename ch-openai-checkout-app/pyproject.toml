@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "setuptools_scm[toml]>=8", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shopping-cart-mcp"
+dynamic = ["version"]
+description = "Shopping cart MCP server"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.115.0",
+  "mcp[fastapi]>=0.1.0",
+  "uvicorn>=0.30.0",
+  "requests>=2.31.0",
+  "pydantic>=2.6.0",
+  "python-dotenv>=1.0.1",
+]
+
+[tool.setuptools]
+packages = ["shopping_cart_python"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "no-local-version"

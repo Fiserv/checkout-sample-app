@@ -1,0 +1,104 @@
+{
+        "id": "CHECKOUT_SESSION_ID",
+        "status": "ready_for_payment",
+        "currency": "usd",
+        "totals": [
+            {
+                "type": "items_base_amount",
+                "amount": 2500,
+                "displayText": "Item_total"
+            },
+            {
+                "type": "subtotal",
+                "amount": 2500,
+                "displayText": "Subtotal"
+            },
+            {
+                "type": "tax",
+                "amount": 0,
+                "displayText": "Tax"
+            },
+            {
+                "type": "total",
+                "amount": 2500,
+                "displayText": "Total"
+            }
+        ],
+        "links": [
+            {
+                "type": "productURL",
+                "url": "https://cert-panerabread.gift-storefront-stage.aws.fisv.cloud/"
+            },
+            {
+                "type": "videoURL",
+                "url": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size400/GC_logoburst23_eGC.png"
+            },
+            {
+                "type": "threeDImageURL",
+                "url": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size400/GC_logoburst23_eGC.png"
+            },
+            {
+                "type": "imageURL",
+                "url": "https://tw-media-test.wgiftcard.com/giftcard/private/255/images/GC_logoburst23_eGC.png"
+            },
+            {
+                "type": "thumbnailImageURL",
+                "url": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size160/GC_logoburst23_eGC.png"
+            },
+            {
+                "type": "returnPolicyURL",
+                "url": "https://merchants.fiserv.com/en-us/privacy/"
+            },
+            {
+                "type": "warningURL",
+                "url": "https://merchants.fiserv.com/en-us/privacy/"
+            }
+        ],
+        "payment_provider": {
+            "provider": "fiserv",
+            "supported_payment_methods": [
+                "card"
+            ],
+            "merchant_id": "panerabread"
+        },
+        "line_items": [
+            {
+                "id": "40ababeb-cdbe-4add-bd48-1989e8cd8407",
+                "item": {
+                    "id": "5d92c124-6984-4310-af4e-09043c63fc66",
+                    "quantity": 1
+                },
+                "discount": 0,
+                "subtotal": 2500,
+                "tax": 0,
+                "total": 2500,
+                "base_amount": 2500
+            }
+        ],
+        "fulfillment_address": {
+            "name": "John Doe",
+            "city": "Anytown",
+            "state": "CA",
+            "country": "US",
+            "postal_code": "12345",
+            "line_one": "123 Main St",
+            "line_two": "Apt 4B"
+        },
+        "fulfillment_options": [
+            {
+                "type": "shipping",
+                "id": "FULFILLMENT_OPTION_ID",
+                "title": "Digital Delivery",
+                "subtotal": 0,
+                "tax": 0,
+                "total": 0,
+                "carrier": "UPS",
+                "earliest_delivery_time": "2026-03-07T23:49:40Z",
+                "latest_delivery_time": "2026-03-11T23:49:40Z",
+                "subtitle": "Estimated delivery in 3-5 business days"
+            }
+        ],
+        "fulfillment_option_id": "FULFILLMENT_OPTION_ID",
+        "merchantId": "panerabread",
+        "payment_mode": "test"
+    }
