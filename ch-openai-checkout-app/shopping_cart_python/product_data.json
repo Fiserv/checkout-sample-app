@@ -1,0 +1,94 @@
+{
+    "results": [
+        {
+            "id": "935510b7-d23f-41c9-b602-344163256e6c",
+            "externalId": "5d92c124-6984-4310-af4e-09043c63fc66",
+            "title": "Panera Bread $25 Digital Gift Card",
+            "description": "A Panera bread gift card is a prepaid card.",
+            "sku": "gc2go",
+            "gtin": "123456789543",
+            "mpn": "GPT5",
+            "brand": "Panera Bread",
+            "merchant": {
+                "id": "86687c3e-92e3-4784-80d8-c96f47994a5a",
+                "merchantId": "100008000003683",
+                "alternateMerchantId": "100008000003683",
+                "name": "Panera Bread",
+                "url": "https://www.panerabread.com/",
+                "privacyURL": "https://www.panerabread.com/en-us/legal/your-privacy.html",
+                "termsOfServiceURL": "https://merchants.fiserv.com/en-us/privacy/"
+            },
+            "media": {
+                "productURL": "https://cert-panerabread.gift-storefront-stage.aws.fisv.cloud/",
+                "imageURL": "https://tw-media-test.wgiftcard.com/giftcard/private/255/images/PAN_B2B_CR80DIG_Bread_25.png",
+                "thumbnailImageURL": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size160/PAN_B2B_CR80DIG_Bread_25.png",
+                "videoURL": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size400/PAN_B2B_CR80DIG_Bread_25.png",
+                "3DImageURL": "https://tw-media-test.wgiftcard.com/giftcard/private/255/size400/PAN_B2B_CR80DIG_Bread_25.png"
+            },
+            "categories": [
+                "e-Gift Cards",
+                "Digital Cards",
+                "Digital Gift Card",
+                "Generic Cards"
+            ],
+            "characteristics": {
+                "condition": "New",
+                "brand": "Panera Bread",
+                "gender": "UNISEX",
+                "size": null,
+                "color": "Green",
+                "material": "Digital",
+                "dimensions": {
+                    "length": "0.03",
+                    "width": "3.38",
+                    "height": "2.13"
+                },
+                "measure": "0.0",
+                "weight": "0.0",
+                "ageGroup": "UNISEX"
+            },
+            "inventorySummary": {
+                "channels": 3,
+                "totalQuantities": 3000,
+                "priceRange": "25.00 USD - 25.00 USD",
+                "channelsOutOfStock": 0
+            },
+            "fulfillment": {
+                "digital": {
+                    "eligible": true
+                },
+                "shipping": [],
+                "pickup": {
+                    "eligible": false,
+                    "pickupSLAInDays": 0
+                }
+            },
+            "returnInfo": {
+                "returnPolicyURL": "https://merchants.fiserv.com/en-us/privacy/",
+                "returnWindowInDays": 30,
+                "returnRateInPercentage": 1
+            },
+            "compliance": {
+                "ageRestriction": 18,
+                "warningURL": "https://merchants.fiserv.com/en-us/privacy/"
+            },
+            "performance": {
+                "popularityScore": 4.5,
+                "productReviewCount": 239,
+                "productReviewRating": 4.7
+            },
+            "variantDetails": {
+                "variantGroup": "variant_group_0012",
+                "variantGroupTitle": "Digital Gift Card"
+            }
+        }
+    ],
+    "pagination": {
+        "rowCount": 1,
+        "pageCount": 1,
+        "countPerPage": 1000,
+        "page": 1
+    },
+    "code": "200",
+    "message": "Success"
+}
