@@ -245,7 +245,7 @@ PORT=8080
 ### Frontend (.env in ch-openai-checkout-ui)
 
 ```env
-VITE_API_URL=http://localhost:8080
+VITE_API_URL=http://localhost:8088
 VITE_PORT=8088
 ```
 
