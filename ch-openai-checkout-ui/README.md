@@ -50,6 +50,9 @@ Use it as a reference for how to wire UI to MCP tool responses and host APIs wit
 Clone the repository and install the workspace dependencies:
 
 > Using npm or yarn? Install the root dependencies with your preferred client and adjust the commands below accordingly.
+```bash
+pnpm install
+```
 
 ## Build the components gallery
 
@@ -90,7 +93,7 @@ The repository ships several demo MCP servers that highlight different widget bu
 ## Run Docker Container
 ```bash
 docker build --platform linux/amd64 -t ch-openai-checkout-ui .
-docker run -d -p 4444:4444 --name ch-openai-checkout-ui ch-openai-checkout-ui
+docker run -d -p 8088:8088 --name ch-openai-checkout-ui ch-openai-checkout-ui
 ```
 
 

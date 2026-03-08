@@ -11,8 +11,8 @@
             "brand": "Panera Bread",
             "merchant": {
                 "id": "86687c3e-92e3-4784-80d8-c96f47994a5a",
-                "merchantId": "100008000003683",
-                "alternateMerchantId": "100008000003683",
+                "merchantId": "panerabread",
+                "alternateMerchantId": "panerabread",
                 "name": "Panera Bread",
                 "url": "https://www.panerabread.com/",
                 "privacyURL": "https://www.panerabread.com/en-us/legal/your-privacy.html",

@@ -13,7 +13,7 @@ for visual interaction through compatible clients.
 
 Environment Variables:
     MCP_WIDGET_TEMPLATE_URI: Widget template URI (default: ui://widget/shopping-cart.html)
-    ASSET_BASE_URL: Base URL for static assets (default: http://localhost:4444)
+    ASSET_BASE_URL: Base URL for static assets (default: http://localhost:8088)
     CHECKOUT_SESSION_API_URL: External API endpoint for creating checkout sessions
     CHECKOUT_COMPLETION_API_URL: External API endpoint for completing checkouts
     PRODUCT_SEARCH_API_URL: External API endpoint for product search
@@ -88,7 +88,7 @@ TOOL_NAME_PRODUCT_SEARCH = "product_search"
 # Widget Configuration
 # ============================================================================
 WIDGET_TEMPLATE_URI = os.getenv("MCP_WIDGET_TEMPLATE_URI", "ui://widget/shopping-cart.html")
-ASSET_BASE_URL = os.getenv("ASSET_BASE_URL", "http://localhost:4444")
+ASSET_BASE_URL = os.getenv("ASSET_BASE_URL", "http://localhost:8088")
 WIDGET_TITLE = os.getenv("MCP_WIDGET_TITLE", "Start shopping cart")
 WIDGET_INVOKING = os.getenv("MCP_WIDGET_INVOKING", "Preparing shopping cart")
 WIDGET_INVOKED = os.getenv("MCP_WIDGET_INVOKED", "Shopping cart ready")
