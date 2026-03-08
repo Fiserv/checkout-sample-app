@@ -599,7 +599,6 @@ async def _handle_get_checkout_session(req: types.CallToolRequest) -> types.Serv
     if USE_STATIC_DATA:
         # Load static checkout session data from JSON file
         try:
-            print(f"Using static data for checkout session. Request headers: {request_headers}")
             api_response = _load_static_data(CHECKOUT_SESSION_DATA_FILE)
             api_response["id"] = str(uuid4())  # Generate unique session ID for each request
         except (FileNotFoundError, json.JSONDecodeError) as e:
@@ -627,6 +626,7 @@ async def _handle_get_checkout_session(req: types.CallToolRequest) -> types.Serv
         # Normalize response
         _normalize_checkout_response(api_response)
 
+    print(f"Checkout session created: {api_response}")
     return types.ServerResult(
         types.CallToolResult(
             content=[],
@@ -689,7 +689,8 @@ async def _handle_complete_checkout(req: types.CallToolRequest) -> types.ServerR
             timeout=API_TIMEOUT
         )
         response_data = response.json()
-        
+    
+    print(f"Checkout session completed: {response_data}")
     return types.ServerResult(
         types.CallToolResult(
             content=[],
