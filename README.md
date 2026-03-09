@@ -33,7 +33,7 @@ A Python-based MCP server that implements e-commerce tools for:
 The server maintains shopping cart state across conversation turns using `_meta["widgetSessionId"]` to keep the UI widget in sync with backend state.
 
 **Key Features:**
-- SSE (Server-Sent Events) endpoint for MCP protocol
+- Streamable HTTP endpoint for MCP protocol
 - Structured JSON responses with embedded UI metadata
 - Shopping cart state management
 - Checkout session handling
@@ -46,6 +46,7 @@ The server maintains shopping cart state across conversation turns using `_meta[
 - `product_data.json` – Sample product catalog
 - `checkout_session_data.json` – Checkout session templates
 - `checkout_completion_data.json` – Order completion data
+- `assets\shopping-cart.html` - HTML embedding js and css dependencies. Your UI generated resources should be linked here.
 
 ### 2. ch-openai-checkout-ui (Frontend UI Application)
 
